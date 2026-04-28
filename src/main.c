@@ -6,36 +6,16 @@ int sum;
 
 #include "uart.h"  // UART driver code file
 
-// int cs122a_main() {
-//   int i;
-//   sum = 10;
-//   char string[64];
-//   UART* up;
-//   uart_init();  // initialize UARTs
-//   sum = 100;
-//   up = &uart[0];  // test UART0
-//   uprints(up, "Enter lines from serial terminal 0\n\r");
-//   sum = 1000;
-//   while (1) {
-//     ugets(up, string);
-//     uprints(up, " ");
-//     uprints(up, string);
-//     uprints(up, "\n\r");
-//     if (strcmp(string, "end") == 0) break;
-//   }
-
-//   uprints(up, "Compute sum of array:\n\r");
-//   sum = 0;
-//   for (i = 0; i < 10; i++) sum += v[i];
-//   uprints(up, "sum = ");
-//   uputc(up, (sum / 10) + '0');
-//   uputc(up, (sum % 10) + '0');
-//   uprints(up, "\n\rEND OF RUN\n\r");
-// }
-
 int cs122a_main() {
-  int i;  
-  uart_init();
+  int i;
+  sum = 10;
+  char string[64];
+  UART* up;
+  uart_init();  // initialize UARTs
+  sum = 100;
+  up = &uart[0];  // test UART0
+  uprints(up, "Enter lines from serial terminal 0\n\r");
+  sum = 1000;
 
   for (i = 0; i < 4; i++){
     UART* up = &uart[i];
@@ -48,6 +28,21 @@ int cs122a_main() {
     uprintf(&uart[0], "UART[%d] Baudrate: %d\n", i, baudrate);
     uprintf(&uart[0], "UART[%d] Line Control Register: 0x%x\n", i, lcr);
   }
+  
+  while (1) {
+    ugets(up, string);
+    uprints(up, " ");
+    uprints(up, string);
+    uprints(up, "\n\r");
+    if (strcmp(string, "end") == 0) break;
+  }
 
-  while(1);
+  uprints(up, "Compute sum of array:\n\r");
+  sum = 0;
+  for (i = 0; i < 10; i++) sum += v[i];
+  uprints(up, "sum = ");
+  uputc(up, (sum / 10) + '0');
+  uputc(up, (sum % 10) + '0');
+  uprints(up, "\n\rEND OF RUN\n\r");
 }
+
