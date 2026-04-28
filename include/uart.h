@@ -4,7 +4,7 @@
 #define UARTDR 0x00
 #define UARTFR 0x18
 #define UARTIBRD 0x24
-#define UARTLCR 0x2c
+#define UARTLCR_H 0x2c
 
 #define TXFE 0x80
 #define RXFF 0x40
