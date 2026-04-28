@@ -25,7 +25,7 @@ int uart_init() {
     up->n = i;
 
     *((volatile unsigned int*)(up->base + UARTIBRD)) = uart_rate_divisors[i];
-    *((volatile unsigned int*)(up->base + UARTLCR_H)) = 0x70;
+    *((volatile unsigned int*)(up->base + UARTLCR_H)) = 0x60;
   }
   return 0;
 }

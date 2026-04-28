@@ -18,8 +18,6 @@ int cs122a_main() {
   // sum = 1000;
 
   for (i = 0; i < 4; i++){
-    UART* up = &uart[i];
-
     unsigned int divisor = *((volatile unsigned int*)(uart[i].base + UARTIBRD));
     unsigned int lcr = *((volatile unsigned int*)(uart[i].base + UARTLCR_H));
 
